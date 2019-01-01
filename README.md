@@ -6,7 +6,6 @@ Demonstrate power of cloud websites + Paas or FaaS
 
 - Unix command line (e.g. bash)
 
-
 ## Azure
 
 Install the azure-client, e.g. `brew install azure-cli`
@@ -39,7 +38,7 @@ Manage storage accounts and resource groups
     --kind StorageV2
 ```
 
-Now 
+Enable the feature:
 
 ```
 az storage blob service-properties update \
@@ -49,11 +48,25 @@ az storage blob service-properties update \
   --index-document index.html
 ```
 
-To find your subscription_id
+Query for endpoint URL:
 
+```
+azure_website=$(az storage account show -n $storage_account_name -g $resource_group \
+   --query "primaryEndpoints.web" --output tsv)
+```
 
-These guideline
-Starter kit for agency cloud adoption
+Upload `web/` to the '$web' container:
+
+```
+az storage blob upload-batch -s ./web -d '$web' \
+  --account-name $account_name
+```
+
+Preview it:
+
+```
+curl $azure_website
+```
 
 ### Azure resources
 

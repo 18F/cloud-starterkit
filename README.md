@@ -27,7 +27,7 @@ Manage storage accounts and resource groups
 - Do I have a storage account?: `az storage account list`
 - If not create one: 
 ```
-  resource_group=$(az group list | jq -r '.[0].name')
+  resource_group=starterkitRG
   location=$(az group list | jq -r '.[0].location')
   storage_account_name=starterkitstorage
   az storage account create \
@@ -141,8 +141,35 @@ Version: 0.1.0
 Target:  azure://310338ec-e189-4169-a39c-2f58efcab2c7
 
   ✔  azure resource group existence: The azure resource group must exist
-     ✔  Resource Groups with name == "myResourceGroup" should exist
+     ✔  Resource Groups with name == "starterkitRG" should exist
 ```
+
+## Destroy and rebuild
+
+Destroy:
+
+```
+az resource delete -n starterkitstorage -g starterkitRG --resource-type "Microsoft.Storage/storageAccounts"
+```
+
+In the `tf-starter/` directory, create `terraform.tfvars` with the credentials for your Azure account. You can just re-purpose your azure `.credentials` file:
+
+```
+  cat ~/.azure/credentials | 
+    sed -e 's/\[/subscription_id = \"/; s/\]/\"/' > tf-starterkit/terraform.tfvars
+  chmod 400 tf-starterkit/terraform.tfvars
+```
+
+Now change directory to `tf-starterkit` for the Terraform work.
+
+Install required dependencies:
+
+```
+terraform init
+```
+
+
+
 
 ### Azure resources
 

@@ -24,6 +24,12 @@ resource "azurerm_storage_account" "starterkitstorage" {
   account_replication_type = "LRS"
 }
 
+resource "azurerm_storage_container" "starterkitstorage" {
+  name = "$web"
+  resource_group_name      = "${azurerm_resource_group.my-rg.name}"
+  storage_account_name     = "${azurerm_storage_account.starterkitstorage.name}"
+}
+
 resource "null_resource" "inspec" {
     provisioner "local-exec" {
 #        command = "inspec exec https://github.com/anniehedgpeth/inspec-azure-demo.git -t azure://${var.subscription_id}"

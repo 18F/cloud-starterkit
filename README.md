@@ -59,7 +59,7 @@ Upload `web/` to the '$web' container:
 
 ```
 az storage blob upload-batch -s ./web -d '$web' \
-  --account-name $account_name
+  --account-name $storage_account_name
 ```
 
 Preview it:
@@ -144,13 +144,31 @@ Target:  azure://310338ec-e189-4169-a39c-2f58efcab2c7
      ✔  Resource Groups with name == "starterkitRG" should exist
 ```
 
-## Destroy and rebuild
+## Assuring compliance
 
-Destroy:
+At this point we've shown we can create a website with code and use Inspec to validate simple existence. Let's add some compliance, namely, making sure we're gathering access logs, which could be a facet of NIST 800-53 AU-2: "Audit events"
+
+
+az storage blob service-properties set \
+  --account-name $storage_account_name \
+  --set logging.write=true
+  --set property1.property2=<value>.
+
+
+ az storage logging update \
+   --log rwd --services bqt --retention 90 --account-name $storage_account_name
+
+* Logging is now true
+
+ Get-AzStorageServiceLoggingProperty -Context $ctx -ServiceType Blob
+ 
+
+Now change directory to `tf-starterkit` for the Terraform work.
+
+Install required dependencies:
 
 ```
-az resource delete -n starterkitstorage -g starterkitRG --resource-type "Microsoft.Storage/storageAccounts"
-```
+terraform init
 
 In the `tf-starter/` directory, create `terraform.tfvars` with the credentials for your Azure account. You can just re-purpose your azure `.credentials` file:
 
@@ -160,13 +178,14 @@ In the `tf-starter/` directory, create `terraform.tfvars` with the credentials f
   chmod 400 tf-starterkit/terraform.tfvars
 ```
 
-Now change directory to `tf-starterkit` for the Terraform work.
+## Destroy and  move on to the next example
 
-Install required dependencies:
+Destroy:
 
 ```
-terraform init
+az resource delete -n starterkitstorage -g starterkitRG --resource-type "Microsoft.Storage/storageAccounts"
 ```
+
 
 
 

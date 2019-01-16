@@ -1,0 +1,14 @@
+{
+  "name": "starterkit",
+  "description": "Description A template for Federalist that uses Gatsby and USWDS 2.0",
+  "license": "CC0-1.0",
+  "version": "0.1.0",
+  "author": "pburkholder",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/pburkholder/starter-feddevops"
+  },
+  "scripts": {
+    "federalist": "echo nothing to do"
+  }
+}

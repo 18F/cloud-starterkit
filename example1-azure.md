@@ -9,7 +9,7 @@ Install the azure-client, e.g. `brew install azure-cli`
 
 Then, from, https://docs.microsoft.com/en-us/azure/storage/blobs/storage-blob-static-website:
 
-Set up to work:
+Set up to work (you should only have to do this once):
 ```
 az extension add --name storage-preview
 az login
@@ -61,10 +61,10 @@ azure_website=$(az storage account show -n $storage_account -g $resource_group \
    --query "primaryEndpoints.web" --output tsv)
 ```
 
-Upload `web/` to the '$web' container:
+Upload `_site/` to the '$web' container:
 
 ```
-az storage blob upload-batch -s ./web -d '$web' \
+az storage blob upload-batch -s ./_site -d '$web' \
   --account-name $storage_account
 ```
 

@@ -9,6 +9,6 @@
     "url": "git://github.com/pburkholder/starter-feddevops"
   },
   "scripts": {
-    "federalist": "echo nothing to do"
+    "federalist": "cp -vr web/. _site"
   }
 }

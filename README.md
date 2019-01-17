@@ -37,3 +37,11 @@ See [Example 1 Federalist](./example1-federalist.md) (Not complete)
 
 See [Example 1 Azure](./example1-azure.md)
 
+## Example 2A: Building and updating a Gatsby site with automate pipeline in Azure
+
+Run 
+
+
+## Example 2B: Building and updating a Gatsby site with automate pipeline in Federalist
+
+s

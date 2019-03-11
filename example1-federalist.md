@@ -4,9 +4,10 @@ _This assumes you have a Federalist account. 18F staff do. Otherwise, request ac
 
 In GitHub, navigate to [this repository](https://github.com/18f/cloud-starterkit), then use the button in the upper left to `fork` this repository. You'll use the URL to this repo as the source for Federalist.
 
-Navigate to https://federalistapp.18f.gov and authenticate with GitHub. Create a new site, using your forked URL.
+Navigate to https://federalistapp.18f.gov and authenticate with GitHub. Create a new site, using your forked URL. Federalist will detect a `New Site`, and you should select:
+* Static site engine: Script only
+* Primary branch: master
+  
+The click on `Add repository-based site`
 
-See all the photos:
-
-Select 'Script-only' build
-
+That should be sufficient to build your first site!

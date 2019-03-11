@@ -39,9 +39,14 @@ See [Example 1 Azure](./example1-azure.md)
 
 ## Example 2A: Building and updating a Gatsby site with automate pipeline in Azure
 
-Run 
+Run... and here's a big gap -- this should be based on 
+https://github.com/pburkholder/great-gatsby-blog
 
 
 ## Example 2B: Building and updating a Gatsby site with automate pipeline in Federalist
+
+
+Run .. and here there's a big gab -- this could be based on
+https://github.com/18F/federalist-gatsby-uswds-template
 
 s
